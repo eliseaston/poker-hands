@@ -7,7 +7,9 @@ class Hand
 
   def classify
     set_values
-    if four_of_a_kind?
+    if flush?
+      'FLUSH'
+    elsif four_of_a_kind?
       'FOUR_OF_A_KIND'
     elsif full_house?
       'FULL_HOUSE'
@@ -20,6 +22,14 @@ class Hand
     else
       'HIGH_CARD'
     end
+  end
+
+  def flush?
+    suits = []
+    @cards.each do |card|
+      suits.push(card[1])
+    end
+    suits.uniq.length == 1 ? true : false
   end
 
   def four_of_a_kind?
