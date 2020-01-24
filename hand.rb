@@ -31,7 +31,7 @@ class Hand
   def straight?
     convert_values
     @values.sort!
-    true if @values[4] - @values[3] == 1 && @values[3] - @values[2] == 1 && @values[2] - @values[1] == 1 && @values[1] - @values[0] == 1
+    @values.each_cons(2).all? { |a, b| a == b - 1}
   end
 
   def flush?
