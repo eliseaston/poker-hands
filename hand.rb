@@ -1,7 +1,6 @@
 class Hand
 
   VALUES = {
-  "A" => 1,
   "2" => 2,
   "3" => 3,
   "4" => 4,
@@ -13,7 +12,8 @@ class Hand
   "0" => 10,
   "J" => 11,
   "Q" => 12,
-  "K" => 13
+  "K" => 13,
+  "A" => 14
   }
 
   def initialize(cards)
@@ -59,7 +59,7 @@ class Hand
 
   def straight?
     @values.sort!
-    @values = [10, 11, 12, 13, 14] if @values == [1, 10, 11, 12, 13]
+    @values = [1, 2, 3, 4, 5] if @values == [2, 3, 4, 5, 14]
     @values.each_cons(2).all? { |a, b| a == b - 1}
   end
 
