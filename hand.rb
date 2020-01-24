@@ -5,6 +5,19 @@ class Hand
     @values = []
   end
 
+  def classify
+    set_values
+    if three_of_a_kind?
+      'THREE_OF_A_KIND'
+    elsif two_pair?
+      'TWO_PAIR'
+    elsif pair?
+      'ONE_PAIR'
+    else
+      'HIGH_CARD'
+    end
+  end
+
   def three_of_a_kind?
     threes = @values.select{ |value| @values.count(value) == 3 }.uniq
     threes.length > 0
