@@ -84,11 +84,7 @@ class Hand
       'A' => 1
     }
     @values.map! do |value|
-      if @special_cards.include?(value)
-        value = @special_values[value]
-      else
-        value.to_i
-      end
+      @special_cards.include?(value) ? value = @special_values[value] : value.to_i
     end
   end
 
