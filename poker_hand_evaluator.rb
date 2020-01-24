@@ -10,6 +10,7 @@ class PokerHandEvaluator
 
   def hand_classifications
     hand = Hand.new(@hands[0])
+    hand.set_values
     if hand.two_pair?
       @outcomes.push('TWO_PAIR')
     elsif hand.pair?
