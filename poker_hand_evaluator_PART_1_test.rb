@@ -45,12 +45,12 @@ describe PokerHandEvaluator do
       evaluate.hand_classifications.must_equal(['FOUR_OF_A_KIND'])
     end
 
-    it 'identifies FLUSH hands' do
+    it 'identifies NORMAL_FLUSH hands' do
       evaluate = PokerHandEvaluator.new([FLUSH])
       evaluate.hand_classifications.must_equal(['FLUSH'])
     end
 
-    it 'identifies STRAIGHT hands' do
+    it 'identifies NORMAL_STRAIGHT hands' do
       evaluate = PokerHandEvaluator.new([STRAIGHT])
       evaluate.hand_classifications.must_equal(['STRAIGHT'])
     end
