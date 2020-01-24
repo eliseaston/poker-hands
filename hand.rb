@@ -9,7 +9,9 @@ class Hand
   def classify
     set_values
     set_suits
-    if flush?
+    if straight?
+      'STRAIGHT'
+    elsif flush?
       'FLUSH'
     elsif four_of_a_kind?
       'FOUR_OF_A_KIND'
@@ -24,6 +26,12 @@ class Hand
     else
       'HIGH_CARD'
     end
+  end
+
+  def straight?
+    convert_values
+    @values.sort!
+    true if @values[4] - @values[3] == 1 && @values[3] - @values[2] == 1 && @values[2] - @values[1] == 1 && @values[1] - @values[0] == 1
   end
 
   def flush?
@@ -63,6 +71,24 @@ class Hand
   def set_suits
     @cards.each do |card|
       @suits.push(card[1])
+    end
+  end
+
+  def convert_values
+    @special_cards = ['0', 'J', 'Q', 'K', 'A']
+    @special_values = {
+      '0' => 10,
+      'J' => 11,
+      'Q' => 12,
+      'K' => 13,
+      'A' => 1
+    }
+    @values.map! do |value|
+      if @special_cards.include?(value)
+        value = @special_values[value]
+      else
+        value.to_i
+      end
     end
   end
 
