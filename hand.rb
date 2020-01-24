@@ -25,9 +25,7 @@ class Hand
   def classify
     set_values
     set_suits
-    if royal_flush?
-      'ROYAL_FLUSH'
-    elsif straight_flush?
+    if straight_flush?
       'STRAIGHT_FLUSH'
     elsif straight?
       'STRAIGHT'
@@ -46,10 +44,6 @@ class Hand
     else
       'HIGH_CARD'
     end
-  end
-
-  def royal_flush?
-    straight_flush? && @values.sum == 60
   end
 
   def straight_flush?
