@@ -8,7 +8,8 @@ describe PokerHandEvaluator do
     ONE_PAIR = %w[7H 7S 4H 8D 5D].shuffle.join(' ')
     TWO_PAIR = %w[8H 8S 4S 7D 7C].shuffle.join(' ')
     THREE_OF_A_KIND = %w[0C 0S 0D KS QC].shuffle.join(' ')
-    STRAIGHT = %w[5S 4D 3S 2H AC].shuffle.join(' ')
+    LOW_STRAIGHT = %w[5S 4D 3S 2H AC].shuffle.join(' ')
+    HIGH_STRAIGHT = %w[AS KD QS JH 0C].shuffle.join(' ')
     FLUSH = %w[QD KD AD 3D 2D].shuffle.join(' ')
     FULL_HOUSE = %w[JC JS JD 6D 6H].shuffle.join(' ')
     FOUR_OF_A_KIND = %w[9H 9S 9D 9C 2S].shuffle.join(' ')
@@ -50,8 +51,13 @@ describe PokerHandEvaluator do
       evaluate.hand_classifications.must_equal(['FLUSH'])
     end
 
-    it 'identifies NORMAL_STRAIGHT hands' do
-      evaluate = PokerHandEvaluator.new([STRAIGHT])
+    it 'identifies low NORMAL_STRAIGHT hands' do
+      evaluate = PokerHandEvaluator.new([LOW_STRAIGHT])
+      evaluate.hand_classifications.must_equal(['STRAIGHT'])
+    end
+
+    it 'identifies high NORMAL_STRAIGHT hands' do
+      evaluate = PokerHandEvaluator.new([HIGH_STRAIGHT])
       evaluate.hand_classifications.must_equal(['STRAIGHT'])
     end
 
@@ -69,7 +75,7 @@ describe PokerHandEvaluator do
       evaluate = PokerHandEvaluator.new([
         THREE_OF_A_KIND,
         TWO_PAIR,
-        STRAIGHT,
+        LOW_STRAIGHT,
         ROYAL_FLUSH,
         HIGH_CARD,
         FLUSH,
