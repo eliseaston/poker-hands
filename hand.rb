@@ -52,6 +52,7 @@ class Hand
 
   def straight?
     @values.sort!
+    @values = [10, 11, 12, 13, 14] if @values == [1, 10, 11, 12, 13]
     @values.each_cons(2).all? { |a, b| a == b - 1}
   end
 
