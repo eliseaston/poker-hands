@@ -30,14 +30,14 @@ class Hand
       'ROYAL_FLUSH'
     when straight_flush?
       'STRAIGHT_FLUSH'
-    when straight?
-      'STRAIGHT'
-    when flush?
-      'FLUSH'
     when four_of_a_kind?
       'FOUR_OF_A_KIND'
     when full_house?
       'FULL_HOUSE'
+    when flush?
+      'FLUSH'
+    when straight?
+      'STRAIGHT'
     when three_of_a_kind?
       'THREE_OF_A_KIND'
     when two_pair?
