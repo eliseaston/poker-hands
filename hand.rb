@@ -25,23 +25,24 @@ class Hand
   def classify
     set_values
     set_suits
-    if royal_flush?
+    case
+    when royal_flush?
       'ROYAL_FLUSH'
-    elsif straight_flush?
+    when straight_flush?
       'STRAIGHT_FLUSH'
-    elsif straight?
+    when straight?
       'STRAIGHT'
-    elsif flush?
+    when flush?
       'FLUSH'
-    elsif four_of_a_kind?
+    when four_of_a_kind?
       'FOUR_OF_A_KIND'
-    elsif full_house?
+    when full_house?
       'FULL_HOUSE'
-    elsif three_of_a_kind?
+    when three_of_a_kind?
       'THREE_OF_A_KIND'
-    elsif two_pair?
+    when two_pair?
       'TWO_PAIR'
-    elsif pair?
+    when pair?
       'ONE_PAIR'
     else
       'HIGH_CARD'
