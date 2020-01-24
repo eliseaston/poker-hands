@@ -65,7 +65,7 @@ describe PokerHandEvaluator do
       evaluate.hand_classifications.must_equal(['ROYAL_FLUSH'])
     end
 
-    it 'handles multiple hands & returns identifications in given order' do
+    it 'handles MULTIPLE_HANDS & returns identifications in given order' do
       evaluate = PokerHandEvaluator.new([
         THREE_OF_A_KIND,
         TWO_PAIR,
