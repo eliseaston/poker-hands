@@ -3,10 +3,11 @@ class PokerHandEvaluator
 
   def initialize(hands)
     @hands = hands
+    @outcomes = []
   end
 
   def hand_classifications
-    ['HIGH_CARD']
+    @outcomes.push('HIGH_CARD')
   end
 
 end
