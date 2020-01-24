@@ -9,7 +9,9 @@ class Hand
   def classify
     set_values
     set_suits
-    if straight?
+    if straight_flush?
+      'STRAIGHT_FLUSH'
+    elsif straight?
       'STRAIGHT'
     elsif flush?
       'FLUSH'
@@ -28,6 +30,10 @@ class Hand
     end
   end
 
+  def straight_flush?
+    straight? && flush?
+  end
+
   def straight?
     convert_values
     @values.sort!
@@ -35,7 +41,7 @@ class Hand
   end
 
   def flush?
-    @suits.uniq.length == 1 ? true : false
+    @suits.uniq.length == 1
   end
 
   def four_of_a_kind?
@@ -44,7 +50,7 @@ class Hand
   end
 
   def full_house?
-    three_of_a_kind? && pair? ? true : false
+    three_of_a_kind? && pair?
   end
 
   def three_of_a_kind?
