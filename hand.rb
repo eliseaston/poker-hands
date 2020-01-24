@@ -7,7 +7,9 @@ class Hand
 
   def classify
     set_values
-    if full_house?
+    if four_of_a_kind?
+      'FOUR_OF_A_KIND'
+    elsif full_house?
       'FULL_HOUSE'
     elsif three_of_a_kind?
       'THREE_OF_A_KIND'
@@ -18,6 +20,11 @@ class Hand
     else
       'HIGH_CARD'
     end
+  end
+
+  def four_of_a_kind?
+    fours = @values.select{ |value| @values.count(value) == 4 }.uniq
+    fours.length > 0
   end
 
   def full_house?
