@@ -7,7 +7,9 @@ class Hand
 
   def classify
     set_values
-    if three_of_a_kind?
+    if full_house?
+      'FULL_HOUSE'
+    elsif three_of_a_kind?
       'THREE_OF_A_KIND'
     elsif two_pair?
       'TWO_PAIR'
@@ -15,6 +17,14 @@ class Hand
       'ONE_PAIR'
     else
       'HIGH_CARD'
+    end
+  end
+
+  def full_house?
+    if three_of_a_kind? && pair?
+      true
+    else
+      false
     end
   end
 
