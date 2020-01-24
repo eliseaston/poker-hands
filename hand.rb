@@ -21,11 +21,7 @@ class Hand
   end
 
   def full_house?
-    if three_of_a_kind? && pair?
-      true
-    else
-      false
-    end
+    three_of_a_kind? && pair? ? true : false
   end
 
   def three_of_a_kind?
