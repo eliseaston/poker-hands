@@ -3,10 +3,12 @@ class Hand
   def initialize(cards)
     @cards = cards.split(" ")
     @values = []
+    @suits = []
   end
 
   def classify
     set_values
+    set_suits
     if flush?
       'FLUSH'
     elsif four_of_a_kind?
@@ -25,11 +27,7 @@ class Hand
   end
 
   def flush?
-    suits = []
-    @cards.each do |card|
-      suits.push(card[1])
-    end
-    suits.uniq.length == 1 ? true : false
+    @suits.uniq.length == 1 ? true : false
   end
 
   def four_of_a_kind?
@@ -59,6 +57,12 @@ class Hand
   def set_values
     @cards.each do |card|
       @values.push(card[0])
+    end
+  end
+
+  def set_suits
+    @cards.each do |card|
+      @suits.push(card[1])
     end
   end
 
