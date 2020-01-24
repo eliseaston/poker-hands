@@ -1,5 +1,21 @@
 class Hand
 
+  VALUES = {
+  "A" => 1,
+  "2" => 2,
+  "3" => 3,
+  "4" => 4,
+  "5" => 5,
+  "6" => 6,
+  "7" => 7,
+  "8" => 8,
+  "9" => 9,
+  "0" => 10,
+  "J" => 11,
+  "Q" => 12,
+  "K" => 13
+  }
+
   def initialize(cards)
     @cards = cards.split(" ")
     @values = []
@@ -35,7 +51,6 @@ class Hand
   end
 
   def straight?
-    convert_values
     @values.sort!
     @values.each_cons(2).all? { |a, b| a == b - 1}
   end
@@ -70,27 +85,13 @@ class Hand
 
   def set_values
     @cards.each do |card|
-      @values.push(card[0])
+      @values.push(VALUES[card[0]])
     end
   end
 
   def set_suits
     @cards.each do |card|
       @suits.push(card[1])
-    end
-  end
-
-  def convert_values
-    @special_cards = ['0', 'J', 'Q', 'K', 'A']
-    @special_values = {
-      '0' => 10,
-      'J' => 11,
-      'Q' => 12,
-      'K' => 13,
-      'A' => 1
-    }
-    @values.map! do |value|
-      @special_cards.include?(value) ? value = @special_values[value] : value.to_i
     end
   end
 
