@@ -5,25 +5,15 @@ This program is a poker hand evaluator. It can be passed a selection of hands of
 ## To run the program
 
 Fork and clone this repository.<br>
-In the command line, require the file `poker_hand_evaluator.rb` and create a new instance of the `PokerHandEvaluator` class, passing in an array of hands as the argument.<br>
-Call the `.hand_classifications` on this instance and it will return the best scoring category for each hand, as an array.
+In the command line, type `ruby poker_hands.rb "ARGUMENT"`, passing in a string of cards to represent a hand, e.g. `ruby poker_hands.rb "AD JD QD KD 0D"`<br>
+You can also chain together multiple hands, e.g. `ruby poker_hands.rb "AD JD QD KD 0D" "3C 4C 9C JC 0H"`
 
 ```
-Ellies-MacBook-Air:poker_hands ellieaston$ irb
-2.6.0 :001 > require './poker_hand_evaluator.rb'
- => true
-2.6.0 :002 >     TWO_PAIR = %w[8H 8S 4S 7D 7C].shuffle.join(' ')
- => "8H 8S 4S 7D 7C"
-2.6.0 :003 >     FLUSH = %w[QD KD AD 3D 2D].shuffle.join(' ')
- => "2D 3D AD KD QD"
-2.6.0 :004 >     FULL_HOUSE = %w[JC JS JD 6D 6H].shuffle.join(' ')
- => "JS 6D JC JD 6H"
-2.6.0 :005 >     ROYAL_FLUSH = %w[AH KH QH JH 0H].shuffle.join(' ')
- => "JH QH 0H AH KH"
-2.6.0 :006 > evaluator = PokerHandEvaluator.new([TWO_PAIR, FLUSH, FULL_HOUSE, ROYAL_FLUSH])
- => #<PokerHandEvaluator:0x00007ffa1b11b7b0 @hands=["8H 8S 4S 7D 7C", "2D 3D AD KD QD", "JS 6D JC JD 6H", "JH QH 0H AH KH"], @outcomes=[]>
- 2.6.0 :007 > evaluator.hand_classifications
- => ["TWO_PAIR", "FLUSH", "FULL_HOUSE", "ROYAL_FLUSH"]
+Ellies-MacBook-Air:poker_hands ellieaston$ ruby poker_hands.rb "AD JD QD KD 0D"
+ => ROYAL_FLUSH
+Ellies-MacBook-Air:poker_hands ellieaston$ ruby poker_hands.rb "AD JD QD KD 0D" "3C 4C 9C JC 0H"
+ => ROYAL_FLUSH
+ => HIGH_CARD
 ```
 
 ## To run the tests
