@@ -40,7 +40,7 @@ The `.hand_classifications` method in the `PokerHandEvaluator` class iterates th
 
 The `.classify` method in the `Hand` class first calls the `.set_values` and `.set_suits` methods, which create a separate array for both the values and suits for the cards in the hand, and stores them both as instance variables. The `.classify` method then uses a switch statement to check the hand for each category, starting with the highest scoring one.
 
-I decided to create the separate `Hand` class to decide the scoring category for each hand because it seemed a more cohesive and logical to me for the hand to decide its own scoring category.
+I decided to create the separate `Hand` class to decide the scoring category for each hand because it seemed more cohesive and logical to me for the hand to decide its own scoring category.
 
 ## My approach
 
